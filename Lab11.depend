@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1428777464 source:c:\users\jerry groom\desktop\data structures\lab11\heap.cpp
+	"Heap.h"
+
+1428777464 c:\users\jerry groom\desktop\data structures\lab11\heap.h
+	<stdexcept>
+	<iostream>
+
+1428788600 source:c:\users\jerry groom\desktop\data structures\lab11\test11.cpp
+	<iostream>
+	<string>
+	<cctype>
+	"Heap.cpp"
+
+1428777464 c:\users\jerry groom\desktop\data structures\lab11\heap.cpp
+	"Heap.h"
+

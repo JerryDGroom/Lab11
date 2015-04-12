@@ -13,7 +13,7 @@
 using namespace std;
 
 #include "Heap.cpp"
-#include "config.h"
+//#include "config.h"
 
 //--------------------------------------------------------------------
 // Prototypes
@@ -29,7 +29,7 @@ template < typename KeyType >
 class TestDataItem
 {
   public:
-    TestDataItem () 
+    TestDataItem ()
 	{ priority = -1; }
 
     void setPriority ( KeyType  newPty )
