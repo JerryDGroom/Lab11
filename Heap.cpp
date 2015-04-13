@@ -90,18 +90,22 @@ void Heap<DataType,KeyType,Comparator>:: insert ( const DataType &newDataItem ) 
     // Requires that heap is not full
     if ( size >= maxSize )
         throw logic_error ("heap is full");
-	
+
 	// YOUR CODE GOES HERE
     // Hint: you may want to use the 2 variables declared above (but you don't have to)
 	// Hint: call getPriority() to get the priority of a data item (e.g. newDataItem.getPriority())
 
+	else(size == 0 ){
+        "See if this works";
+	}
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 }
 
 //--------------------------------------------------------------------
@@ -128,17 +132,17 @@ DataType Heap<DataType,KeyType,Comparator>:: remove () throw ( logic_error )
 	// Hint: you may want to use some of the variables declared above (but you don't have to)
 	// Hint: call getPriority() to get the priority of a data item (e.g. insertDataItem.getPriority())
 
-	
 
 
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 }
 
 //--------------------------------------------------------------------
