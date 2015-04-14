@@ -13,7 +13,6 @@
 using namespace std;
 
 #include "Heap.cpp"
-//#include "config.h"
 
 //--------------------------------------------------------------------
 // Prototypes

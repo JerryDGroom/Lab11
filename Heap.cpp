@@ -22,8 +22,8 @@ Heap<DataType,KeyType,Comparator>:: Heap ( int maxNumber )
 // Creates an empty heap. Allocates enough memory for maxNumber
 // data items.
 
-  : maxSize(maxNumber),
-    size(0)
+    : maxSize(maxNumber),
+      size(0)
 {
     dataItems = new DataType [ maxSize ];
 }
@@ -33,12 +33,13 @@ Heap<DataType,KeyType,Comparator>:: Heap ( const Heap& other )
 
 // Copy constructor
 
-  : maxSize(other.maxSize),
-    size(other.size)
+    : maxSize(other.maxSize),
+      size(other.size)
 {
     dataItems = new DataType [ maxSize ];
-    for( int i=0; i<size; i++ ) {
-	  dataItems[i] = other.dataItems[i];
+    for( int i=0; i<size; i++ )
+    {
+        dataItems[i] = other.dataItems[i];
     }
 }
 
@@ -48,16 +49,21 @@ template < typename DataType, typename KeyType, typename Comparator >
 Heap<DataType,KeyType,Comparator>& Heap<DataType,KeyType,Comparator>:: operator= ( const Heap& other )
 
 {
-    if( this == &other ) { return *this; }	// Self-assignment
+    if( this == &other )
+    {
+        return *this;    // Self-assignment
+    }
 
-    if( other.maxSize > maxSize ) {
-	delete[] dataItems;
-	dataItems = new DataType [other.maxSize];
+    if( other.maxSize > maxSize )
+    {
+        delete[] dataItems;
+        dataItems = new DataType [other.maxSize];
     }
     maxSize = other.maxNumber;
     size = other.size;
-    for( int i=0; i<size; i++ ) {
-	dataItems[i] = other.dataItems[i];
+    for( int i=0; i<size; i++ )
+    {
+        dataItems[i] = other.dataItems[i];
     }
 
     return *this;
@@ -91,21 +97,32 @@ void Heap<DataType,KeyType,Comparator>:: insert ( const DataType &newDataItem ) 
     if ( size >= maxSize )
         throw logic_error ("heap is full");
 
-	// YOUR CODE GOES HERE
+    // YOUR CODE GOES HERE
     // Hint: you may want to use the 2 variables declared above (but you don't have to)
-	// Hint: call getPriority() to get the priority of a data item (e.g. newDataItem.getPriority())
+    // Hint: call getPriority() to get the priority of a data item (e.g. newDataItem.getPriority())
 
-	else(size == 0 ){
-        "See if this works";
-	}
+    else
+    {
 
+        int j = size;
 
-
-
-
-
-
-
+        if(size==0)
+        {
+            dataItems[j] = newDataItem;
+        }
+        else
+        {
+            parentj = (j - 1)/2;
+            while((j != 0) && comparator(newDataItem.getPriority(),dataItems[parentj].getPriority() ))
+            {
+                dataItems[j] = dataItems[parentj];
+                j = parentj;
+                parentj = (j - 1)/2;
+            }
+            dataItems[j] = newDataItem;
+        }
+        size++;
+    }
 }
 
 //--------------------------------------------------------------------
@@ -119,8 +136,8 @@ DataType Heap<DataType,KeyType,Comparator>:: remove () throw ( logic_error )
 // produced.
 
 {
-    DataType oldMax,    // Data item removed (old root)
-             insertDataItem;  // Data item to insert as root (bottom right)
+    DataType oldMax,            // Data item removed (old root)
+             insertDataItem;    // Data item to insert as root (bottom right)
     bool stop;          // (Re)insertion point found
     int j;              // Array index that moves down the heap
 
@@ -128,21 +145,19 @@ DataType Heap<DataType,KeyType,Comparator>:: remove () throw ( logic_error )
     if ( size == 0 )
         throw logic_error("heap is empty");
 
-	// YOUR CODE GOES HERE
-	// Hint: you may want to use some of the variables declared above (but you don't have to)
-	// Hint: call getPriority() to get the priority of a data item (e.g. insertDataItem.getPriority())
+    // YOUR CODE GOES HERE
+    // Hint: you may want to use some of the variables declared above (but you don't have to)
+    // Hint: call getPriority() to get the priority of a data item (e.g. insertDataItem.getPriority())
 
-
-
-
-
-
-
-
-
-
-
-
+    else
+    {
+        oldMax = dataItems[0];
+        //insert(dataItems[size-1].getPriority() );
+        void Heap::insert( const DataType dataItems[size-1].getPriority() ) throw ( logic_error );
+        //dataItems[0] = dataItems[size-1];
+        size--;
+        return oldMax;
+    }
 }
 
 //--------------------------------------------------------------------
@@ -192,17 +207,17 @@ void Heap<DataType,KeyType,Comparator>:: showStructure () const
 
     cout << endl;
     if ( size == 0 )
-       cout << "Empty heap" << endl;
+        cout << "Empty heap" << endl;
     else
     {
-       cout << "size = " << size << endl;       // Output array form
-       for ( j = 0 ; j < maxSize ; j++ )
-           cout << j << "\t";
-       cout << endl;
-       for ( j = 0 ; j < size ; j++ )
-           cout << dataItems[j].getPriority() << "\t";
-       cout << endl << endl;
-       showSubtree(0,0);                        // Output tree form
+        cout << "size = " << size << endl;       // Output array form
+        for ( j = 0 ; j < maxSize ; j++ )
+            cout << j << "\t";
+        cout << endl;
+        for ( j = 0 ; j < size ; j++ )
+            cout << dataItems[j].getPriority() << "\t";
+        cout << endl << endl;
+        showSubtree(0,0);                        // Output tree form
     }
 }
 
@@ -216,18 +231,18 @@ void Heap<DataType,KeyType,Comparator>:: showSubtree ( int index, int level ) co
 // level is the level of this dataItems within the tree.
 
 {
-     int j;   // Loop counter
+    int j;   // Loop counter
 
-     if ( index < size )
-     {
+    if ( index < size )
+    {
         showSubtree(2*index+2,level+1);        // Output right subtree
         for ( j = 0 ; j < level ; j++ )        // Tab over to level
             cout << "\t";
         cout << " " << dataItems[index].getPriority();   // Output dataItems's priority
         if ( 2*index+2 < size )                // Output "connector"
-           cout << "<";
+            cout << "<";
         else if ( 2*index+1 < size )
-           cout << "\\";
+            cout << "\\";
         cout << endl;
         showSubtree(2*index+1,level+1);        // Output left subtree
     }
