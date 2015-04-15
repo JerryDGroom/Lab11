@@ -1,9 +1,11 @@
-//--------------------------------------------------------------------
-//
-//  Laboratory 11, Programming Exercise 1                    ossim.cpp
-//
-//
-//--------------------------------------------------------------------
+/*
+*******************************************************************
+Laboratory 11
+Programming Exercise 1                                      ossim.cpp
+Jerry Groom
+4/09/2015
+*******************************************************************
+*/
 
 // Simulates an operating system's use of a priority queue to regulate
 // access to a system resource (printer, disk, etc.).
@@ -43,7 +45,7 @@ int main ()
         numArrivals,             // Number of new tasks arriving
         j;                       // Loop counter
 
-		
+
     // Seed the random number generator
     srand( (unsigned int) time( NULL ) );
 
@@ -59,18 +61,18 @@ int main ()
 		cout << endl;
         cout << "minute " << minute << endl;
         cout << "-------------" << endl;
-        
+
 
         // Remove the highest priority task in the queue (if any).
 		if ( ! taskPQ.isEmpty() )
         {
-                                       // <--------------------------- add one line of code here
+            task = taskPQ.remove();// <--------------------------- add one line of code here
            cout << "dequeued task with priority "
                 << task.priority << " that \n    arrived at minute " << task.arrived << " (waited "
                 << (minute-task.arrived) << " minutes in queue)" << endl;
         }
 
-		
+
         // Determine the number of new tasks and add them to the queue.
         switch ( rand() % 4 )
         {
@@ -78,12 +80,12 @@ int main ()
           case 3 : numArrivals = 0; break;
           case 1 : numArrivals = 1; break;
           case 2 : numArrivals = 2;
-        }      
+        }
 	    task.arrived = minute;
         for ( j = 0 ; j < numArrivals ; j++ )
         {
             task.priority = rand() % numPtyLevels;
-                                          // <--------------------------- add one line of code here
+            taskPQ.insert(task);// <--------------------------- add one line of code here
             cout << "inserted task with priority " << task.priority << " at time " << minute << endl;
         }
     }

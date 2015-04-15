@@ -105,9 +105,7 @@ void Heap<DataType,KeyType,Comparator>:: insert ( const DataType &newDataItem ) 
 
     else
     {
-
         int j = size;
-
         if(size==0)
         {
             dataItems[j] = newDataItem;
@@ -124,6 +122,7 @@ void Heap<DataType,KeyType,Comparator>:: insert ( const DataType &newDataItem ) 
             dataItems[j] = newDataItem;
         }
         size++;
+
     }
 }
 
@@ -145,7 +144,9 @@ DataType Heap<DataType,KeyType,Comparator>:: remove () throw ( logic_error )
 
     // Requires that heap is not empty
     if ( size == 0 )
+    {
         throw logic_error("heap is empty");
+    }
 
     // YOUR CODE GOES HERE
     // Hint: you may want to use some of the variables declared above (but you don't have to)
@@ -153,15 +154,50 @@ DataType Heap<DataType,KeyType,Comparator>:: remove () throw ( logic_error )
 
     else
     {
+        /*
+        --------------------------------------------------
+        Deleting the root, then replacing it with bottom right node (size-1)
+        --------------------------------------------------
+        */
+        DataType oldMax;
         oldMax = dataItems[0];
-        //insert(dataItems[size-1].getPriority() );
-        void Heap::insert( const DataType dataItems[size-1].getPriority() ) throw ( logic_error );
-        //dataItems[0] = dataItems[size-1];
+        dataItems[0] = dataItems[size-1];
         size--;
         return oldMax;
-    }
-}
+        /*
+        --------------------------------------------------
+        */
 
+
+
+        /*
+        --------------------------------------------------
+        Comparing the new root to the children nodes, and swapping if needed.
+        --------------------------------------------------
+
+        DataType leftChild;
+        DataType rightChild;
+        DataType currentNode;
+        currentNode = dataItems[0];
+        //leftChild = ((2 * currentNode) + 1);
+        //rightChild = ((2 * currentNode) + 2);
+
+        if(comparator(currentNode.getPriority(),currentNode[leftChild].getPiority())){
+
+        }
+
+        /*
+        --------------------------------------------------
+        */
+
+
+
+
+
+
+
+}
+}
 //--------------------------------------------------------------------
 
 template < typename DataType, typename KeyType, typename Comparator >
