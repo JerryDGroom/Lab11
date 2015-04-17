@@ -66,7 +66,7 @@ int main ()
         // Remove the highest priority task in the queue (if any).
 		if ( ! taskPQ.isEmpty() )
         {
-            task = taskPQ.remove();// <--------------------------- add one line of code here
+            task = taskPQ.remove();// <--- add one line of code here --------------------
            cout << "dequeued task with priority "
                 << task.priority << " that \n    arrived at minute " << task.arrived << " (waited "
                 << (minute-task.arrived) << " minutes in queue)" << endl;
@@ -85,7 +85,7 @@ int main ()
         for ( j = 0 ; j < numArrivals ; j++ )
         {
             task.priority = rand() % numPtyLevels;
-            taskPQ.insert(task);// <--------------------------- add one line of code here
+            taskPQ.insert(task);// <--- add one line of code here --------------------
             cout << "inserted task with priority " << task.priority << " at time " << minute << endl;
         }
     }

@@ -154,49 +154,34 @@ DataType Heap<DataType,KeyType,Comparator>:: remove () throw ( logic_error )
 
     else
     {
+
         /*
         --------------------------------------------------
         Deleting the root, then replacing it with bottom right node (size-1)
         --------------------------------------------------
         */
+
         DataType oldMax;
         oldMax = dataItems[0];
         dataItems[0] = dataItems[size-1];
         size--;
         return oldMax;
+
         /*
         --------------------------------------------------
         */
-
-
 
         /*
         --------------------------------------------------
         Comparing the new root to the children nodes, and swapping if needed.
         --------------------------------------------------
-
-        DataType leftChild;
-        DataType rightChild;
-        DataType currentNode;
-        currentNode = dataItems[0];
-        //leftChild = ((2 * currentNode) + 1);
-        //rightChild = ((2 * currentNode) + 2);
-
-        if(comparator(currentNode.getPriority(),currentNode[leftChild].getPiority())){
-
-        }
-
-        /*
-        --------------------------------------------------
         */
 
+        //
+        //      I cannot figure this part out   ????
+        //
 
-
-
-
-
-
-}
+    }
 }
 //--------------------------------------------------------------------
 
