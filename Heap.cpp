@@ -152,36 +152,27 @@ DataType Heap<DataType,KeyType,Comparator>:: remove () throw ( logic_error )
     // Hint: you may want to use some of the variables declared above (but you don't have to)
     // Hint: call getPriority() to get the priority of a data item (e.g. insertDataItem.getPriority())
 
-    else
+    oldMax = dataItems[0];
+    insertDataItem = dataItems[size-1];
+
+    stop = 0;
+    j = 1;
+
+    while ( j < size  &&  !stop )
     {
-
-        /*
-        --------------------------------------------------
-        Deleting the root, then replacing it with bottom right node (size-1)
-        --------------------------------------------------
-        */
-
-        DataType oldMax;
-        oldMax = dataItems[0];
-        dataItems[0] = dataItems[size-1];
-        size--;
-        return oldMax;
-
-        /*
-        --------------------------------------------------
-        */
-
-        /*
-        --------------------------------------------------
-        Comparing the new root to the children nodes, and swapping if needed.
-        --------------------------------------------------
-        */
-
-        //
-        //      I cannot figure this part out   ????
-        //
-
+        if ( j < size-1  && dataItems[j].getPriority() < dataItems[j+1].getPriority() )
+            j++;
+        if ( insertDataItem.getPriority() >= dataItems[j].getPriority() )
+            stop = 1;
+        else
+        {
+            dataItems[(j-1)/2] = dataItems[j];
+            j = 2*j+1;
+        }
     }
+    dataItems[(j-1)/2] = insertDataItem;
+    size--;
+    return oldMax;
 }
 //--------------------------------------------------------------------
 
